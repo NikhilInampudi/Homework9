@@ -70,12 +70,21 @@ jobs:
           cache-from: type=registry,ref=ninam001/qr_code:cache
           cache-to: type=inline,mode=max
         # Build and push Docker image
-
+     
       - name: Scan the Docker image
-        uses: aquasecurity/trivy-action@master  # Updated to a specific stable version
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ninam001/qr_code:${{ github.sha }}'
+          image-ref: 'kaw393939/devops_demo:${{ github.sha }}'
           format: 'table'
-          exit-code: 1  # Fail the job if vulnerabilities are found
+          exit-code: '1' # Fail the job if vulnerabilities are found
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
+          
+      # - name: Scan the Docker image
+      #   uses: aquasecurity/trivy-action@master  # Updated to a specific stable version
+      #   with:
+      #     image-ref: 'ninam001/qr_code:${{ github.sha }}'
+      #     format: 'table'
+      #     exit-code: 1  # Fail the job if vulnerabilities are found
+      #     ignore-unfixed: true
+      #     severity: 'CRITICAL,HIGH'
