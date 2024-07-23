@@ -65,16 +65,15 @@ jobs:
         uses: docker/build-push-action@v5 # Specify the exact version
         with:
           push: true
-          tags: ninam001/qr_code:${{ github.sha }}  # Tag with the commit SHA
+          tags: ninam001/qr_code:8d327af58e75a876a615b9e9c0f3b416856eee54  # Tag with the commit SHA
           platforms: linux/amd64,linux/arm64 # Multi-platform support
           cache-from: type=registry,ref=ninam001/qr_code:cache
           cache-to: type=inline,mode=max
-        # Build and push Docker image
-
+           
       - name: Scan the Docker image
         uses: aquasecurity/trivy-action@master  # Updated to a specific stable version
         with:
-          image-ref: 'ninam001/qr_code:${{ github.sha }}'
+          image-ref: 'ninam001/qr_code:8d327af58e75a876a615b9e9c0f3b416856eee54'
           format: 'table'
           exit-code: 1  # Fail the job if vulnerabilities are found
           ignore-unfixed: true
