@@ -66,9 +66,7 @@ jobs:
         uses: docker/build-push-action@v5 # Specify the exact version
         with:
           push: true
-          tags: |
-            ninam001/qr_code:${{ github.sha }}  # Tag with the commit SHA
-            ninam001/qr_code:latest            # Optional: Tag with 'latest'
+          tags: ninam001/qr_code:${{ github.sha }}  # Tag with the commit SHA
           platforms: linux/amd64,linux/arm64 # Multi-platform support
           cache-from: type=registry,ref=ninam001/qr_code:cache
           cache-to: type=inline,mode=max
